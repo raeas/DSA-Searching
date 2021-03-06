@@ -32,3 +32,52 @@ function binarySearch(array, value, start, end) {
 
 //With each iteration, you can cut the area you have to search in half; 
 //this means that the worst and average-case running times are both O(log(n)).
+
+
+/////Exercise How Many Searches/////
+//A. Given a sorted list 3, 5, 6, 8, 11, 12, 14, 15, 17, 18 and using the 
+//recursive binary search algorithm, identify the sequence of numbers that each recursive call 
+//will search to try and find 8.
+
+// arr = [3, 5, 6, 8, 11, 12, 14, 15, 17, 18]
+// value = 8
+// item = arr[4] // 11
+// 1. 11 > 8 => return binarySearch()
+// 2. 10 > 8 => return binarySearch()
+// 3. 9 > 8 => return binarySearch()
+// 4. 8 = 8 => return index // 3
+
+//B. Given a sorted list 3, 5, 6, 8, 11, 12, 14, 15, 17, 18 and 
+//using the recursive binary search algorithm, identify the sequence 
+//of numbers that each recursive call will search to try and find 16.
+
+// array = [3, 5, 6, 8, 11, 12, 14, 15, 17, 18]
+// value = 16
+// start = 0
+// end = 9
+
+// item = arr[4] // 11
+// start index = 4 // 11
+// end index = 9 // 18
+// 1. 11 < 16 => return binarySearch(array, value, index + 1, end)
+// start index = (4 + 1) = 5
+// end index = 9
+// item = arr[5] // 12
+// 2. 12 < 16 => return binarySearch(array, value, index + 1, end)
+// start index = (5+1) = 6 
+// end index = 9
+// item = arr[6] // 14
+// 3. 14 < 16 => return binarySearch(array, value, index + 1, end)
+// start index = (6 + 1) = 7 
+// end index = 9
+// item = arr[7]
+// 4. 15 < 16 => return binarySearch(array, value, index + 1, end)
+// start index = (7 + 1) = 8 
+// end index = 9
+// item = arr[8]
+// 5. 17 > 16 => return binarySearch(array, value, start, index - 1)
+// start index = 8
+// end index = 7
+// 8 > 7 => Return -1
+// Item not found
+
